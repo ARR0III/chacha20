@@ -106,7 +106,6 @@ void chacha20_ivsetup(CHACHA20_CTX * ctx, const uint8_t * iv) {
 void chacha20_crypt(CHACHA20_CTX * ctx, 
                     const uint8_t * in, uint8_t * out, int32_t length) {
   uint8_t output[BLOCK_LEN];
-  int32_t count = 0;
   int32_t i;
 
   for (; length > 0; length -= BLOCK_LEN) {
@@ -115,13 +114,11 @@ void chacha20_crypt(CHACHA20_CTX * ctx,
    
     if (ctx->input[12] == 0) {
       ctx->input[13] = PLUSONE(ctx->input[13]);
-      /* 
-        !!! stopping at 2^70 bytes per nonce is user's responsibility !!!
-      */
+      /* !!! stopping at 2^70 bytes per nonce is user's responsibility !!! */
     }
 
     for (i = 0; i < length; ++i)
-      out[count + i] = in[count + i] ^ output[i];
+      out[i] = in[i] ^ output[i];
 
     in  += BLOCK_LEN;
     out += BLOCK_LEN;
