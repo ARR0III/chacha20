@@ -16,8 +16,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "src/chacha20.h"
-#include "src/myfunctions.h"
+#include "chacha20.h"
+#include "myfunctions.h"
 
 int main (void) {
   uint8_t key    [32] = {0x00};
