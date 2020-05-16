@@ -15,8 +15,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "src/chacha20.h"
-#include "src/myfunctions.h"
+#include "chacha20.h"
+#include "myfunctions.h"
 
 int main (void) {
   uint8_t key    [32] = {0x00};
@@ -25,7 +25,6 @@ int main (void) {
   uint8_t output [BLOCK_LEN] = {0x00};
 
   uint32_t ctx_len = sizeof(CHACHA20_CTX);
-
   CHACHA20_CTX * chacha20_ctx = (CHACHA20_CTX *)calloc(1, ctx_len);
 
   if (chacha20_ctx == NULL) {
