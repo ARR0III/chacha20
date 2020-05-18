@@ -7,9 +7,7 @@
 typedef struct {
   uint32_t key[32];
 } CHACHA20_CTX;
-/*
-  COUNT ROUNDS ONLY = 8, 12 or 20;
-*/
+
 #define ROUNDS    20
 #define BLOCK_LEN 64
 
